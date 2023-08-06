@@ -8,7 +8,7 @@ export const createCollaboratorController = async (req: Request, res: Response) 
         if(!project){
             throw new Error('Project not found');
         }
-        project.addCollaborator(email);
+        project.addCollaborator!(email);
         res.send(project);
     } catch (error :any) {
         res.status(400).send({
