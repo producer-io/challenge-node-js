@@ -1,17 +1,18 @@
 import {Request, Response} from "express";
 import {listProjectsController} from "./list-projects.controller";
 import {ProjectRepository} from "../repositories/project.repository";
+import {Project} from "../models/project";
 
 describe('Controller::listProjects', () => {
     beforeEach(() => {
         ProjectRepository.projects = [];
-        const project1 = {name: 'Project 1'};
+        const project1 = new Project('Project 1');
         ProjectRepository.save(project1);
     });
 
     it('should return a list of project', () => {
         // Arrange
-        let projects = [];
+        let projects: Project[] = [];
         const req = {} as any as Request;
         const res = {send: (_) => projects = _} as any as Response;
 
