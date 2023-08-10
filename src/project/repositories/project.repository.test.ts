@@ -1,17 +1,18 @@
 import {ProjectRepository} from "./project.repository";
+import { Project } from "../models/project"
 
 describe('Repository::Project', () => {
     beforeEach(() => {
         ProjectRepository.projects = [];
-        const project1 = {name: 'Project 1'};
-        const project2 = {name: 'Project 2'};
+        const project1 = new Project('Project 1');
+        const project2 = new Project('Project 2');
         ProjectRepository.save(project1);
         ProjectRepository.save(project2);
     });
 
     it('should save a project', () => {
         // Arrange
-        const project = {name: 'Project 3'};
+        const project = new Project('Project 3');
 
         // Act
         ProjectRepository.save(project);

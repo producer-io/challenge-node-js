@@ -2,6 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import {createProjectController} from "./project/controllers/create-project.controller";
 import {listProjectsController} from "./project/controllers/list-projects.controller";
+import {createProjectCollaboratorController} from "./project/controllers/create-project-collaborator.controller";
+import {listProjectCollaboratorsController} from "./project/controllers/list-projects-collaborators.controller";
 
 const bootstrap = async () => {
     const app = express();
@@ -10,6 +12,9 @@ const bootstrap = async () => {
 
     app.post('/projects', createProjectController);
     app.get('/projects', listProjectsController);
+
+    app.post('/projects/:projectId/collaborator', createProjectCollaboratorController);
+    app.get('/projects/:projectId/collaborators', listProjectCollaboratorsController);
 
     app.listen(port, () => {
         console.log(`Api listening at http://localhost:${port}`);
