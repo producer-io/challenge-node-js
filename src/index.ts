@@ -13,8 +13,8 @@ const bootstrap = async () => {
     app.post('/projects', createProjectController);
     app.get('/projects', listProjectsController);
 
-    app.post('/projects/collaborator', createProjectCollaboratorController);
-    app.get('/projects/:id/collaborators', listProjectCollaboratorsController);
+    app.post('/projects/:projectId/collaborator', createProjectCollaboratorController);
+    app.get('/projects/:projectId/collaborators', listProjectCollaboratorsController);
 
     app.listen(port, () => {
         console.log(`Api listening at http://localhost:${port}`);

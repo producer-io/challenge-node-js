@@ -8,7 +8,7 @@ describe('Controller::createProjectCollaborator', () => {
         // Arrange
         const name = 'Project 1';
         const email = 'test1@mail.com';
-        const req = {body: {email, projectId: 0}} as any as Request
+        const req = {body: {email}, params: {projectId: 0}} as any as Request
         const res = {status: jest.fn().mockReturnThis(),send: jest.fn()} as any as Response;
 
         const newProject = new Project(name);
@@ -26,7 +26,7 @@ describe('Controller::createProjectCollaborator', () => {
     it('should be return error if project id not exist', () => {
         // Arrange
         const email = 'test@mail.com';
-        const req = {body: {email, projectId: 1}} as any as Request
+        const req = {body: {email}, params: {projectId: 1}} as any as Request
         // const res = {send: jest.fn()} as any as Response;
 
         const res = {status: jest.fn().mockReturnThis(),send: jest.fn()} as any as Response;
@@ -40,7 +40,7 @@ describe('Controller::createProjectCollaborator', () => {
 
     it('should be return error if collaborator email not exist', () => {
         // Arrange
-        const req = {body: {projectId: 0}} as any as Request
+        const req = {body: {}, params: {projectId: 0}} as any as Request
         const res = {status: jest.fn().mockReturnThis(),send: jest.fn()} as any as Response;
 
         // Act
@@ -53,7 +53,7 @@ describe('Controller::createProjectCollaborator', () => {
     it('should be return error if collaborator email not valid', () => {
         // Arrange
         const email = 'invalid-email';
-        const req = {body: {email, projectId: 0}} as any as Request
+        const req = {body: {email}, params: {projectId: 0}} as any as Request
         const res = {status: jest.fn().mockReturnThis(),send: jest.fn()} as any as Response;
 
         // Act

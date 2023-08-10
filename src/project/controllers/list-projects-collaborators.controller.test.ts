@@ -16,7 +16,7 @@ describe('Controller::listProjectCollaborators', () => {
     it('should return a list collaborators of project', () => {
         // Arrange
         let collaborators: Collaborator[] = [];
-        const req = {params: {id: 0}} as any as Request
+        const req = {params: {projectId: 0}} as any as Request
         const res = {send: (_) => collaborators = _} as any as Response;
 
         // Act

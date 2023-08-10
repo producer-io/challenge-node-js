@@ -3,7 +3,7 @@ import {Project} from "../models/project";
 import {ProjectRepository} from "../repositories/project.repository";
 
 export const createProjectCollaboratorController = async (req: Request, res: Response) => {
-    const {email, projectId} = req.body;
+    const {body: {email}, params: {projectId}} = req;
 
     // client validations
     if(projectId == undefined) {

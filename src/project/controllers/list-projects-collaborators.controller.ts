@@ -2,12 +2,12 @@ import {Request, Response} from "express";
 import {ProjectRepository} from "../repositories/project.repository";
 
 export const listProjectCollaboratorsController = async (req: Request, res: Response) => {
-    const {id} = req.params;
+    const {projectId} = req.params;
 
     try {
-        const existedProject = ProjectRepository.findById(parseInt(id))
+        const existedProject = ProjectRepository.findById(parseInt(projectId))
         if(!existedProject) {
-            res.status(400).send({ error: `project with id = ${id} not exist` });
+            res.status(400).send({ error: `project with id = ${projectId} not exist` });
         }
 
         const projectCollaborators = existedProject.allCollaborators();
