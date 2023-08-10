@@ -26,4 +26,16 @@ describe('Controller::listProjectCollaborators', () => {
         expect(collaborators.length).toBe(1);
         expect(collaborators[0].email).toBe(email);
    });
+
+   it('should return error if project id not exist', () => {
+        // Arrange
+        const req = {params: {}} as any as Request
+        const res = {status: jest.fn().mockReturnThis(),send: jest.fn()} as any as Response;
+
+        // Act
+        listProjectCollaboratorsController(req, res);
+
+        // Assert
+        expect(res.status).toHaveBeenCalledWith(400);
+    });
 });
